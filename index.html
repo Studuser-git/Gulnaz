@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Олимп-Старт — олимпиадная школа</title>
+<meta name="description" content="Олимп-Старт — подготовка учеников 1–11 классов к олимпиадам Казахстана и международным олимпиадам. Актау, очно и онлайн.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3eadb;
+  --card:#fbf6ec;
+  --sand:#e6d6bd;
+  --line:#d6c3a5;
+  --text:#3b2e22;
+  --muted:#6e5d4b;
+  --accent:#8a5a2b;
+  --accent-ink:#fbf6ec;
+  --olive:#6b7341;
+  --olive-soft:#e3e3c8;
+  --accent-soft:#efdcc3;
+  --shadow:0 1px 0 rgba(59,46,34,.04),0 8px 24px -16px rgba(59,46,34,.35);
+  --radius:20px;
+  --head:"Unbounded",system-ui,sans-serif;
+  --body:"Golos Text",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#231c15;
+    --card:#2d241b;
+    --sand:#3a2f24;
+    --line:#4d3f30;
+    --text:#f0e4d2;
+    --muted:#bba78e;
+    --accent:#d9a066;
+    --accent-ink:#231c15;
+    --olive:#b5bd85;
+    --olive-soft:#3a3d26;
+    --accent-soft:#4a3523;
+    --shadow:0 1px 0 rgba(0,0,0,.2),0 8px 24px -16px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#231c15;--card:#2d241b;--sand:#3a2f24;--line:#4d3f30;--text:#f0e4d2;--muted:#bba78e;
+  --accent:#d9a066;--accent-ink:#231c15;--olive:#b5bd85;--olive-soft:#3a3d26;--accent-soft:#4a3523;
+  --shadow:0 1px 0 rgba(0,0,0,.2),0 8px 24px -16px rgba(0,0,0,.6);color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.55 var(--body);overflow-x:hidden}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.15;margin:0;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+section{padding:72px 0;border-top:1.5px dashed var(--line)}
+section:first-of-type{border-top:0}
+.eyebrow{font:600 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--olive);margin-bottom:14px}
+.sec-title{font-size:clamp(26px,3.4vw,38px);margin-bottom:12px}
+.sec-lead{color:var(--muted);max-width:640px;margin-bottom:36px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:999px;border:1.5px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;cursor:pointer;transition:transform .15s,background .15s,color .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.ghost:hover{background:var(--accent-soft)}
+.btn.small{min-height:36px;padding:0 14px;font-size:14px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600;background:var(--sand);color:var(--text)}
+.pill.intl{background:var(--accent-soft);color:var(--accent)}
+.pill.kz{background:var(--olive-soft);color:var(--olive)}
+
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+/* Header */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1.5px solid var(--line)}
+.head{display:flex;align-items:center;gap:24px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font:700 18px/1 var(--head);white-space:nowrap}
+.logo-mark{width:36px;height:36px;border-radius:12px;background:var(--accent);display:grid;place-items:center;color:var(--accent-ink)}
+nav{margin-left:auto}
+nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+nav a{display:block;padding:8px 12px;border-radius:999px;color:var(--text);text-decoration:none;font-weight:500;font-size:15px}
+nav a:hover{background:var(--sand)}
+
+/* Hero */
+.hero{padding:72px 0 64px}
+.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(32px,5vw,58px);margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:19px;color:var(--muted);max-width:560px;margin-bottom:28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px}
+.stats{padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.stat{padding:18px 8px;border-bottom:1.5px dashed var(--line)}
+.stat:nth-child(odd){border-right:1.5px dashed var(--line);padding-right:16px}
+.stat:nth-child(even){padding-left:20px}
+.stat:nth-last-child(-n+1){border-bottom:0}
+.stat.wide{grid-column:1/-1;border-right:0!important;padding-left:8px}
+.stat b{display:block;font:700 clamp(26px,3vw,34px)/1.1 var(--head);color:var(--accent);margin-bottom:4px}
+.stat span{color:var(--muted);font-size:15px}
+
+/* Grades */
+.grade-picker{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.grade-btn{width:54px;height:54px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:600 18px/1 var(--head);cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.grade-btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.grade-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.grade-result{display:grid;grid-template-columns:auto 1fr;gap:32px;padding:32px;align-items:start}
+.grade-num{width:120px;height:120px;border-radius:28px;background:var(--sand);display:grid;place-items:center;text-align:center}
+.grade-num b{display:block;font:700 48px/1 var(--head);color:var(--accent)}
+.grade-num span{font-size:14px;color:var(--muted)}
+.grade-result h3{font-size:24px;margin-bottom:6px}
+.grade-stage{color:var(--olive);font-weight:600;margin-bottom:16px}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.checks li{position:relative;padding-left:32px}
+.checks li::before{content:"";position:absolute;left:0;top:3px;width:20px;height:20px;border-radius:50%;background:var(--olive-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%236b7341' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+
+/* Programs */
+.programs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.program{padding:28px;display:flex;flex-direction:column;gap:14px}
+.program .tag{align-self:flex-start}
+.program h3{font-size:22px}
+.program .load{margin-top:auto;padding-top:16px;border-top:1.5px dashed var(--line);font-weight:600;color:var(--accent);display:flex;align-items:center;gap:8px}
+.program.featured{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.program.featured .checks li::before{background-color:rgba(255,255,255,.18)}
+.program.featured .load{color:var(--accent-ink);border-color:rgba(255,255,255,.35)}
+.program.featured .pill{background:rgba(255,255,255,.18);color:var(--accent-ink)}
+
+.subjects{display:flex;flex-wrap:wrap;gap:10px}
+.subjects li{list-style:none;padding:10px 18px;border-radius:999px;background:var(--card);border:1.5px solid var(--line);font-weight:500}
+.subjects{padding:0;margin:0}
+
+/* How */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+.step{padding:26px;position:relative}
+.step-n{font:700 15px/1 var(--head);width:44px;height:44px;border-radius:14px;background:var(--sand);color:var(--accent);display:grid;place-items:center;margin-bottom:18px}
+.step h3{font-size:18px;margin-bottom:8px}
+.step p{color:var(--muted);font-size:15px}
+
+/* Olympiads */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.filter-btn{min-height:42px;padding:0 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font-weight:600;cursor:pointer}
+.filter-btn[aria-pressed="true"]{background:var(--text);border-color:var(--text);color:var(--bg)}
+.table-card{overflow:hidden}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:16px 20px;vertical-align:top}
+th{font:600 13px/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--sand)}
+tbody tr+tr td{border-top:1.5px dashed var(--line)}
+td .name{font-weight:600}
+td .sub{display:block;color:var(--muted);font-size:14px}
+.note{margin-top:14px;font-size:14px;color:var(--muted)}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:28px;align-items:start}
+.q-list{display:flex;flex-direction:column;gap:8px}
+.q-btn{text-align:left;padding:14px 18px;border-radius:16px;border:1.5px solid var(--line);background:var(--card);font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.q-btn::after{content:"→";color:var(--muted);transition:transform .15s}
+.q-btn:hover{border-color:var(--accent)}
+.q-btn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.q-btn[aria-pressed="true"]::after{color:var(--accent);transform:translateX(3px)}
+.faq-side{display:grid;gap:20px;position:sticky;top:92px}
+.answer{padding:28px}
+.answer h3{font-size:20px;margin-bottom:12px}
+.answer p{margin-bottom:20px}
+.ask{padding:28px}
+.ask h3{font-size:20px;margin-bottom:6px}
+.ask > p{color:var(--muted);font-size:15px;margin-bottom:18px}
+.form-row{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
+label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+input,select,textarea{width:100%;font:inherit;color:var(--text);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:11px 14px}
+textarea{min-height:100px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.field{margin-bottom:14px}
+.form-msg{margin-top:14px;font-size:15px}
+.form-msg:empty{display:none}
+.form-msg pre{white-space:pre-wrap;font:inherit;background:var(--bg);border:1.5px dashed var(--line);border-radius:12px;padding:12px;margin:10px 0 0;user-select:all}
+.err{color:#b4442e}
+
+/* Contacts */
+.contacts-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+.contact-list{padding:12px 28px}
+.c-row{display:grid;grid-template-columns:120px 1fr auto;gap:16px;align-items:center;padding:16px 0}
+.c-row+.c-row{border-top:1.5px dashed var(--line)}
+.c-row dt{color:var(--muted);font-size:14px;font-weight:600}
+.c-row dd{margin:0;font-weight:600;user-select:text;overflow-wrap:anywhere}
+.copy-btn{min-height:34px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:transparent;font-size:14px;font-weight:600;cursor:pointer;color:var(--accent);min-width:118px}
+.copy-btn:hover{border-color:var(--accent)}
+.copy-btn.done{background:var(--olive-soft);color:var(--olive);border-color:var(--olive)}
+.socials{padding:28px}
+.socials h3{font-size:20px;margin-bottom:6px}
+.socials > p{color:var(--muted);font-size:15px;margin-bottom:18px}
+.social-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.social{display:flex;align-items:center;gap:10px;padding:14px;border-radius:16px;border:1.5px solid var(--line);background:var(--bg);text-decoration:none;color:var(--text);font-weight:600;transition:border-color .15s,transform .15s}
+.social:hover{border-color:var(--accent);transform:translateY(-1px)}
+.social svg{width:24px;height:24px;flex:none;color:var(--accent)}
+
+footer{border-top:1.5px dashed var(--line);padding:28px 0;color:var(--muted);font-size:15px}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot a{font-weight:600;text-decoration:none}
+
+/* Responsive */
+nav a,.btn{white-space:nowrap}
+@media (max-width:1000px){
+  nav a{padding:8px 8px;font-size:14px}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:960px){
+  nav,.head .btn{display:none}
+  .head .btn.mobile{display:inline-flex;margin-left:auto}
+}
+@media (max-width:860px){
+  .hero-grid,.faq-grid,.contacts-grid,.programs{grid-template-columns:1fr}
+  .faq-side{position:static}
+  section{padding:56px 0}
+  .hero{padding:48px 0}
+  .table-card{border-radius:16px}
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:100%}
+  tr{padding:14px 18px}
+  tbody tr+tr{border-top:1.5px dashed var(--line)}
+  tbody tr+tr td{border-top:0}
+  td{padding:4px 0}
+  td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  td:first-child::before{display:none}
+}
+@media (min-width:961px){.head .btn.mobile{display:none}}
+@media (max-width:480px){
+  .wrap{padding:0 16px}
+  .steps,.social-grid,.form-row{grid-template-columns:1fr}
+  .grade-result{grid-template-columns:1fr;padding:22px;gap:20px}
+  .grade-num{width:auto;height:auto;padding:16px;display:flex;gap:12px;align-items:baseline;justify-content:flex-start}
+  .grade-num b{font-size:36px}
+  .grade-btn{width:48px;height:48px;font-size:16px}
+  .stats{padding:18px}
+  .c-row{grid-template-columns:1fr auto;gap:4px 12px}
+  .c-row dt{grid-column:1/-1}
+  .contact-list{padding:6px 20px}
+  .answer,.ask,.socials,.program{padding:22px}
+  .head .btn.mobile{padding:0 14px;min-height:40px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head">
+    <a class="logo" href="#top" aria-label="Олимп-Старт — на главную">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>
+      </span>
+      Олимп-Старт
+    </a>
+    <nav aria-label="Основное меню">
+      <ul>
+        <li><a href="#grades">Классы</a></li>
+        <li><a href="#programs">Программы</a></li>
+        <li><a href="#how">Как учимся</a></li>
+        <li><a href="#stages">Олимпиады</a></li>
+        <li><a href="#faq">Вопросы</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="#ask">Задать вопрос</a>
+    <a class="btn mobile" href="#ask">Задать вопрос</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Первый экран -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Олимпиадная школа · Актау</p>
+        <h1>Готовим к олимпиадам <em>с 1 по 11 класс</em></h1>
+        <p class="hero-lead">Математика, естественные науки, языки и проекты. Республиканские этапы Казахстана, FEMO, Copernicus, «Кенгуру» и IZhO — с личным планом на сезон.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#grades">Подобрать программу</a>
+          <a class="btn ghost" href="#faq">Частые вопросы</a>
+        </div>
+        <div class="hero-meta">
+          <span class="pill">Казахский · русский · английский</span>
+          <span class="pill">Очно и онлайн</span>
+        </div>
+      </div>
+      <div class="card stats" aria-label="Ключевые цифры">
+        <div class="stat"><b>1–11</b><span>классы</span></div>
+        <div class="stat"><b>3</b><span>языка обучения</span></div>
+        <div class="stat"><b>9</b><span>предметов</span></div>
+        <div class="stat"><b>6–8</b><span>учеников в группе</span></div>
+        <div class="stat wide"><b>2×90 мин</b><span>занятий в неделю по предмету</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Выбор класса -->
+  <section id="grades">
+    <div class="wrap">
+      <p class="eyebrow">Выбор класса</p>
+      <h2 class="sec-title">В каком классе ваш ребёнок?</h2>
+      <p class="sec-lead">Нажмите на номер класса — покажем, к каким олимпиадам готовиться в этом году и на что сделать упор.</p>
+      <div class="grade-picker" role="group" aria-label="Класс ребёнка" id="gradePicker"></div>
+      <div class="card grade-result" aria-live="polite" id="gradeResult"></div>
+    </div>
+  </section>
+
+  <!-- Программы -->
+  <section id="programs">
+    <div class="wrap">
+      <p class="eyebrow">Программы</p>
+      <h2 class="sec-title">Три ступени подготовки</h2>
+      <p class="sec-lead">Каждая ступень опирается на предыдущую: от логики и первых турниров — к республиканскому этапу и IZhO.</p>
+      <div class="programs">
+        <article class="card program">
+          <span class="pill tag">1–4 класс</span>
+          <h3>«Юный олимпиец»</h3>
+          <ul class="checks">
+            <li>Математика и логика в игровой форме</li>
+            <li>Проекты для конкурса «Зерде»</li>
+            <li>FEMO, «Кенгуру», Copernicus; «Алтын сақа» для 3–4 классов</li>
+          </ul>
+          <p class="load">2 занятия по 60 минут в неделю</p>
+        </article>
+        <article class="card program featured">
+          <span class="pill tag">5–8 класс</span>
+          <h3>«Система»</h3>
+          <ul class="checks">
+            <li>FEMO и Copernicus: отбор и международные туры</li>
+            <li>Подготовка к НИШ, БИЛ и физмат-школам</li>
+            <li>Ежемесячный пробный тур</li>
+          </ul>
+          <p class="load">2 занятия по 90 минут в неделю</p>
+        </article>
+        <article class="card program">
+          <span class="pill tag">9–11 класс</span>
+          <h3>«Финал»</h3>
+          <ul class="checks">
+            <li>Республиканская олимпиада по предметам</li>
+            <li>IZhO и Copernicus</li>
+            <li>Индивидуальный наставник</li>
+          </ul>
+          <p class="load">3 занятия по 90 минут в неделю</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Предметы -->
+  <section id="subjects">
+    <div class="wrap">
+      <p class="eyebrow">Предметы</p>
+      <h2 class="sec-title">Чему учим</h2>
+      <p class="sec-lead">Занятия ведутся на казахском, русском и английском языках.</p>
+      <ul class="subjects">
+        <li>Математика</li><li>Информатика</li><li>Физика</li><li>Химия</li><li>Биология</li>
+        <li>Естествознание</li><li>Казахский язык</li><li>Русский язык</li><li>Английский язык</li>
+        <li>История Казахстана</li><li>Исследовательские проекты</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Как учимся -->
+  <section id="how">
+    <div class="wrap">
+      <p class="eyebrow">Как учимся</p>
+      <h2 class="sec-title">Четыре шага до олимпиады</h2>
+      <p class="sec-lead">Начинаем с бесплатной диагностики, заканчиваем разбором работы после тура.</p>
+      <ol class="steps" style="list-style:none;padding:0;margin:0">
+        <li class="card step"><div class="step-n">01</div><h3>Диагностика</h3><p>Бесплатное тестирование на 40 минут — видим сильные стороны и пробелы.</p></li>
+        <li class="card step"><div class="step-n">02</div><h3>Личный план</h3><p>Выбираем предмет, группу и олимпиады сезона.</p></li>
+        <li class="card step"><div class="step-n">03</div><h3>Занятия и туры</h3><p>Теория, разбор задач прошлых лет, пробная олимпиада раз в месяц.</p></li>
+        <li class="card step"><div class="step-n">04</div><h3>Олимпиада</h3><p>Сопровождение на этапах, разбор работы, подготовка апелляции.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Олимпиады -->
+  <section id="stages">
+    <div class="wrap">
+      <p class="eyebrow">Олимпиады</p>
+      <h2 class="sec-title">К чему готовим</h2>
+      <p class="sec-lead">Республиканские олимпиады Казахстана и международные турниры.</p>
+      <div class="filters" role="group" aria-label="Фильтр олимпиад">
+        <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">Все</button>
+        <button class="filter-btn" type="button" data-filter="kz" aria-pressed="false">Казахстан</button>
+        <button class="filter-btn" type="button" data-filter="intl" aria-pressed="false">Международные</button>
+      </div>
+      <div class="card table-card">
+        <table>
+          <thead><tr><th>Олимпиада</th><th>Уровень</th><th>Классы</th><th>Предметы и формат</th></tr></thead>
+          <tbody id="olyBody">
+            <tr data-type="intl"><td><span class="name">FEMO</span><span class="sub">Fizmat Elementary Math Olympiad</span></td><td data-label="Уровень"><span class="pill intl">Международная</span></td><td data-label="Классы">начальная и средняя школа</td><td data-label="Формат">Математика; осенний и весенний туры, международный финал</td></tr>
+            <tr data-type="intl"><td><span class="name">Copernicus Olympiad</span></td><td data-label="Уровень"><span class="pill intl">Международная</span></td><td data-label="Классы">школьники разных возрастов</td><td data-label="Формат">Математика, естественные науки; финал проходит в США</td></tr>
+            <tr data-type="intl"><td><span class="name">«Кенгуру»</span></td><td data-label="Уровень"><span class="pill intl">Международная</span></td><td data-label="Классы">1–11</td><td data-label="Формат">Математика, тестовый формат</td></tr>
+            <tr data-type="intl"><td><span class="name">IZhO</span><span class="sub">Международная Жаутыковская олимпиада</span></td><td data-label="Уровень"><span class="pill intl">Международная</span></td><td data-label="Классы">старшие классы</td><td data-label="Формат">Математика, физика, информатика; проходит в Алматы</td></tr>
+            <tr data-type="kz"><td><span class="name">«Алтын сақа»</span></td><td data-label="Уровень"><span class="pill kz">Республиканская</span></td><td data-label="Классы">3–4</td><td data-label="Формат">Математика; областной и республиканский этапы</td></tr>
+            <tr data-type="kz"><td><span class="name">«Зерде»</span></td><td data-label="Уровень"><span class="pill kz">Республиканский конкурс</span></td><td data-label="Классы">младшие и средние классы</td><td data-label="Формат">Исследовательские работы и проекты</td></tr>
+            <tr data-type="kz"><td><span class="name">Республиканская олимпиада</span><span class="sub">по общеобразовательным предметам</span></td><td data-label="Уровень"><span class="pill kz">Республиканская</span></td><td data-label="Классы">9–11</td><td data-label="Формат">Этапы: школьный → районный/городской → областной → республиканский</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Классы и сроки ориентировочные — уточняйте по официальным положениям текущего сезона.</p>
+    </div>
+  </section>
+
+  <!-- Вопросы -->
+  <section id="faq">
+    <div class="wrap">
+      <p class="eyebrow">Вопросы</p>
+      <h2 class="sec-title">Частые вопросы родителей</h2>
+      <p class="sec-lead">Выберите вопрос — ответ появится рядом. Не нашли свой? Напишите его в форме ниже.</p>
+      <div class="faq-grid">
+        <div class="q-list" role="group" aria-label="Вопросы" id="qList"></div>
+        <div class="faq-side">
+          <div class="card answer" aria-live="polite">
+            <h3 id="aTitle"></h3>
+            <p id="aText"></p>
+            <a class="btn ghost small" href="#contacts">Связаться с администратором</a>
+          </div>
+          <form class="card ask" id="ask" novalidate>
+            <h3>Свой вопрос</h3>
+            <p>Мы соберём текст сообщения и скопируем его — останется вставить в Telegram, WhatsApp или письмо.</p>
+            <div class="form-row">
+              <div class="field">
+                <label for="fName">Имя родителя *</label>
+                <input id="fName" name="name" autocomplete="given-name" required>
+              </div>
+              <div class="field">
+                <label for="fGrade">Класс ребёнка</label>
+                <select id="fGrade" name="grade"></select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="fText">Ваш вопрос *</label>
+              <textarea id="fText" name="text" required></textarea>
+            </div>
+            <button class="btn" type="submit">Скопировать вопрос</button>
+            <div class="form-msg" id="formMsg" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contacts">
+    <div class="wrap">
+      <p class="eyebrow">Контакты</p>
+      <h2 class="sec-title">Свяжитесь с нами</h2>
+      <p class="sec-lead">Запишем на бесплатную диагностику и ответим на вопросы.</p>
+      <div class="contacts-grid">
+        <dl class="card contact-list" style="margin:0">
+          <div class="c-row"><dt>Телефон</dt><dd>+7 (701) 970-64-82</dd><button class="copy-btn" type="button" data-copy="+77019706482">Копировать</button></div>
+          <div class="c-row"><dt>Почта</dt><dd>info@olimp-start.kz</dd><button class="copy-btn" type="button" data-copy="info@olimp-start.kz">Копировать</button></div>
+          <div class="c-row"><dt>Адрес</dt><dd>г. Актау, 19 мкр, ЖК «Мансур»</dd><button class="copy-btn" type="button" data-copy="г. Актау, 19 мкр, ЖК «Мансур»">Копировать</button></div>
+          <div class="c-row"><dt>Часы работы</dt><dd>пн–сб, 9:00–20:00</dd></div>
+        </dl>
+        <div class="card socials">
+          <h3>Мы в соцсетях</h3>
+          <p>Анонсы олимпиад, разборы задач и новости школы.</p>
+          <div class="social-grid">
+            <a class="social" href="https://wa.me/77019706482" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 1c-1.2-.5-2.4-1.7-2.9-2.9l1-1-1-2z"/></svg>WhatsApp</a>
+            <a class="social" href="https://t.me/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11l6 2 2 6 3-4 5 4z"/><path d="M9 13l12-9"/></svg>Telegram</a>
+            <a class="social" href="https://www.instagram.com/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>Instagram</a>
+            <a class="social" href="https://www.youtube.com/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg>YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Олимп-Старт · Актау</span>
+    <a href="#top">Наверх ↑</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* FR-1. Выбор класса */
+  var GRADES = {
+    1:{t:"Первый шаг в олимпиады", s:"Ступень «Юный олимпиец»", p:["«Кенгуру» — первый опыт тестовой олимпиады","Первые туры FEMO","Логика и внимание в игровой форме"]},
+    2:{t:"Развиваем логику и внимание", s:"Ступень «Юный олимпиец»", p:["FEMO и «Кенгуру»","Copernicus — первая международная олимпиада","Первый исследовательский проект"]},
+    3:{t:"Первые республиканские старты", s:"Ступень «Юный олимпиец»", p:["«Алтын сақа» — областной этап","FEMO и Copernicus","Проект для конкурса «Зерде»"]},
+    4:{t:"Год «Алтын сақа»", s:"Ступень «Юный олимпиец»", p:["Областной и республиканский этапы «Алтын сақа»","Международный тур FEMO","Подготовка к поступлению в НИШ и БИЛ"]},
+    5:{t:"Систему закладываем сейчас", s:"Ступень «Система»", p:["FEMO и Copernicus: отбор и международные туры","Проект для «Зерде»","Вступительные в НИШ, БИЛ, РФМШ"]},
+    6:{t:"Расширяем круг предметов", s:"Ступень «Система»", p:["FEMO и Copernicus","«Кенгуру»","Второй предмет: информатика или естествознание"]},
+    7:{t:"Готовимся к старшей лиге", s:"Ступень «Система»", p:["Copernicus","Олимпиады физмат-школ","Ежемесячные пробные туры"]},
+    8:{t:"Основа для Республиканской олимпиады", s:"Ступень «Система»", p:["Copernicus","Олимпиады вузов","Задачи школьного и районного этапов Республиканской олимпиады"]},
+    9:{t:"Республиканская олимпиада", s:"Ступень «Финал»", p:["Областной этап Республиканской олимпиады","IZhO","Copernicus"]},
+    10:{t:"Цель — республиканский этап", s:"Ступень «Финал»", p:["Республиканская олимпиада по предмету","IZhO","Индивидуальный наставник"]},
+    11:{t:"Финал и поступление", s:"Ступень «Финал»", p:["Сопровождение на этапах олимпиады","Стратегия под выбранный вуз","Призовые места для грантов"]}
+  };
+  var picker = document.getElementById("gradePicker");
+  var result = document.getElementById("gradeResult");
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function showGrade(n){
+    var g = GRADES[n];
+    picker.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed", String(+b.dataset.grade===n))});
+    result.innerHTML =
+      '<div class="grade-num"><b>'+n+'</b><span>класс</span></div>'+
+      '<div><h3>'+esc(g.t)+'</h3><p class="grade-stage">'+esc(g.s)+'</p><ul class="checks">'+
+      g.p.map(function(x){return "<li>"+esc(x)+"</li>"}).join("")+'</ul></div>';
+  }
+  for (var i=1;i<=11;i++){
+    var b=document.createElement("button");
+    b.type="button";b.className="grade-btn";b.textContent=i;b.dataset.grade=i;
+    b.setAttribute("aria-label",i+" класс");b.setAttribute("aria-pressed","false");
+    b.addEventListener("click",function(){showGrade(+this.dataset.grade)});
+    picker.appendChild(b);
+  }
+  showGrade(5);
+
+  /* FR-2. Фильтр олимпиад */
+  var fBtns = document.querySelectorAll(".filter-btn");
+  fBtns.forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var f = btn.dataset.filter;
+      fBtns.forEach(function(x){x.setAttribute("aria-pressed",String(x===btn))});
+      document.querySelectorAll("#olyBody tr").forEach(function(tr){
+        tr.hidden = !(f==="all" || tr.dataset.type===f);
+      });
+    });
+  });
+
+  /* FR-3. FAQ */
+  var FAQ = [
+    ["С какого класса можно начать?","С 1 класса. Для младших школьников занятия длятся 60 минут, с 5 класса — 90 минут."],
+    ["Готовите к FEMO?","Да: разбираем прошлые туры, проводим пробные туры и готовим к международному туру."],
+    ["Что такое Copernicus?","Международная олимпиада по математике и естественным наукам. Финал проходит в США."],
+    ["Для кого «Алтын сақа»?","Для учеников 3–4 классов. Олимпиада проходит в два этапа: областной и республиканский."],
+    ["Помогаете с «Зерде»?","Да: помогаем выбрать тему, провести исследование, оформить работу и подготовиться к защите."],
+    ["На каком языке занятия?","На казахском, русском и английском — язык выбираете при записи."],
+    ["Сколько стоит обучение?","Зависит от ступени и формата (очно или онлайн). Стоимость назовём после диагностики — она бесплатная."],
+    ["Есть ли онлайн-формат?","Да. Программа та же, что и очно, плюс записи уроков."],
+    ["Готовите к НИШ и БИЛ?","Да, для учеников 4–6 классов. Также готовим к поступлению в РФМШ."]
+  ];
+  var qList=document.getElementById("qList"), aT=document.getElementById("aTitle"), aX=document.getElementById("aText");
+  FAQ.forEach(function(q,idx){
+    var b=document.createElement("button");
+    b.type="button";b.className="q-btn";b.textContent=q[0];b.setAttribute("aria-pressed","false");
+    b.addEventListener("click",function(){
+      qList.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});
+      aT.textContent=q[0];aX.textContent=q[1];
+    });
+    qList.appendChild(b);
+  });
+  qList.firstChild.click();
+
+  /* Clipboard helper */
+  function copyText(text){
+    if (navigator.clipboard && window.isSecureContext){
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function(res,rej){
+      try{
+        var ta=document.createElement("textarea");
+        ta.value=text;ta.setAttribute("readonly","");ta.style.position="fixed";ta.style.opacity="0";
+        document.body.appendChild(ta);ta.select();
+        var ok=document.execCommand("copy");document.body.removeChild(ta);
+        ok?res():rej();
+      }catch(e){rej(e)}
+    });
+  }
+
+  /* FR-4. Форма «Свой вопрос» */
+  var sel=document.getElementById("fGrade");
+  sel.innerHTML='<option value="">Не указан</option>'+Array.from({length:11},function(_,i){return '<option value="'+(i+1)+'">'+(i+1)+' класс</option>'}).join("");
+  var form=document.getElementById("ask"), msg=document.getElementById("formMsg");
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var nEl=document.getElementById("fName"), tEl=document.getElementById("fText");
+    var name=nEl.value.trim(), grade=sel.value, text=tEl.value.trim();
+    if(!name||!text){
+      msg.innerHTML='<span class="err">Заполните имя и текст вопроса.</span>';
+      (name?tEl:nEl).focus();
+      return;
+    }
+    var full="Здравствуйте! Меня зовут "+name+(grade?", класс ребёнка: "+grade:"")+", вопрос: "+text;
+    copyText(full).then(function(){
+      msg.innerHTML='<b>Текст скопирован.</b> Вставьте его в <a href="https://wa.me/77019706482" target="_blank" rel="noopener">WhatsApp</a>, Telegram или письмо на info@olimp-start.kz.';
+    },function(){
+      msg.innerHTML='Не удалось скопировать автоматически. Выделите текст и отправьте его в WhatsApp, Telegram или письмом:<pre></pre>';
+      msg.querySelector("pre").textContent=full;
+    });
+  });
+
+  /* FR-5. Копирование контактов */
+  document.querySelectorAll(".copy-btn").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      copyText(btn.dataset.copy).then(function(){
+        btn.textContent="Скопировано";btn.classList.add("done");
+        setTimeout(function(){btn.textContent="Копировать";btn.classList.remove("done")},2000);
+      },function(){btn.textContent="Не вышло"});
+    });
+  });
+})();
+</script>
+</body>
+</html>
